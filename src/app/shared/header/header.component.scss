@@ -1,0 +1,29 @@
+.header {
+  border-radius: 20px;
+  background-color: black;
+}
+.inline-block {
+  display: inline-block; /* インラインブロック要素にする */
+  background-color: #ccc; /* 背景色指定 */
+  padding: 20px; /* 余白指定 */
+  height: 100px; /* 高さ指定 */
+  vertical-align: middle;
+}
+.inline-block p {
+  text-align: center;
+}
+.v_line_fix {
+  display: inline-block; /* インラインブロック要素にする */
+  width: 3px;
+  height: 70px;
+  vertical-align: middle;
+  background-color: brown;
+}
+input {
+  width: 100%; /*親要素いっぱい広げる*/
+  padding: 10px 15px; /*ボックスを大きくする*/
+  font-size: 16px;
+  border-radius: 10px; /*ボックス角の丸み*/
+  border: 2px solid #ddd; /*枠線*/
+  box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+}
