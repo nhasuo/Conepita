@@ -7,21 +7,20 @@ import { LoginComponent } from './login/login.component';
 import { MapComponent } from './map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { HeaderComponent } from './shared/header/header.component';
+import { CommonService } from './service/common.service';
+import { MapService } from './service/map.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    MapComponent
-  ],
+  declarations: [AppComponent, LoginComponent, MapComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [CommonService, MapService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
