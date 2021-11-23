@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { sampleData } from '../sampleData';
+import { MapService } from '../../service/map.service';
+import { async } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +9,9 @@ import { sampleData } from '../sampleData';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  constructor(private mapService: MapService) {}
+  ngOnInit(): void {}
+
   // 証券番号
   vin: string = sampleData.vin;
 
@@ -26,19 +31,21 @@ export class HeaderComponent implements OnInit {
   // 住所取得
   zahyoip: string = sampleData.data.zahyo_0;
   zahyoipArray: string[] = this.zahyoip.split(',');
-  lat: number = Number(this.zahyoipArray[0]);
-  lng: number = Number(this.zahyoipArray[1]);
+  lat: number = parseFloat(this.zahyoipArray[0]);
+  lng: number = parseFloat(this.zahyoipArray[1]);
+  location?: string;
 
-  geocoder = new google.maps.Geocoder();
-  map = google.maps.Map;
-  infowindow = new google.maps.InfoWindow();
-
-  latlang = {
-    lat: Number(this.zahyoipArray[0]),
-    lng: Number(this.zahyoipArray[1]),
+  latlng = {
+    lat: this.lat,
+    lng: this.lng,
   };
-
-  constructor() {}
-
-  ngOnInit(): void {}
+  geocoder = new google.maps.Geocoder();
+  result: any = this.geocoder
+    .geocode({ location: this.latlng })
+    .then((response) => {
+      this.location = response.results[0].formatted_address.substr(13);
+    })
+    .catch((e) => {
+      console.log('Geocoder failed due to: ' + e);
+    });
 }

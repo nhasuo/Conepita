@@ -1,10 +1,9 @@
 .header {
   border-radius: 20px;
-  background-color: black;
+  background-color: #111111;
 }
 .inline-block {
   display: inline-block; /* インラインブロック要素にする */
-  background-color: #ccc; /* 背景色指定 */
   padding: 20px; /* 余白指定 */
   height: 100px; /* 高さ指定 */
   vertical-align: middle;
@@ -14,10 +13,10 @@
 }
 .v_line_fix {
   display: inline-block; /* インラインブロック要素にする */
-  width: 3px;
+  width: 2px;
   height: 70px;
   vertical-align: middle;
-  background-color: brown;
+  background-color: white;
 }
 input {
   width: 100%; /*親要素いっぱい広げる*/
@@ -26,4 +25,10 @@ input {
   border-radius: 10px; /*ボックス角の丸み*/
   border: 2px solid #ddd; /*枠線*/
   box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+}
+.left {
+  margin-left: 10px;
+}
+p {
+  color: white;
 }

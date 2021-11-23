@@ -8,6 +8,8 @@ import { MapComponent } from './map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { HeaderComponent } from './shared/header/header.component';
+import { CommonService } from './service/common.service';
+import { MapService } from './service/map.service';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, MapComponent, HeaderComponent],
@@ -18,7 +20,7 @@ import { HeaderComponent } from './shared/header/header.component';
     FormsModule,
     GoogleMapsModule,
   ],
-  providers: [],
+  providers: [CommonService, MapService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
