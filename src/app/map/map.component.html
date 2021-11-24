@@ -1,11 +1,5 @@
 <div class="my-google-map">
-  <google-map
-  height="500px"
-  width="500px"
-  [center]="center"
-  [zoom]="zoom"
-  [options]="options"
-  >
-    <map-marker [position]="marker.position"></map-marker>
+  <google-map [options]="mapOptions">
+     <map-marker [position]="marker.position"></map-marker>
   </google-map>
 </div>

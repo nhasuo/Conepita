@@ -18,20 +18,17 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {}
 
   zoom = 16;
-  // 東新宿駅の座標
   center: google.maps.LatLngLiteral = {
     lat: Number(this.zahyoIpArray[0]),
     lng: Number(this.zahyoIpArray[1]),
   };
   // 地図のオプション
-  options: google.maps.MapOptions = {
+  mapOptions: google.maps.MapOptions = {
     disableDefaultUI: true,
+    center: this.center,
   };
   // markerの位置
   marker = {
-    position: {
-      lat: Number(this.zahyoIpArray[0]),
-      lng: Number(this.zahyoIpArray[1]),
-    },
+    position: this.center,
   };
 }
