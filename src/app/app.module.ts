@@ -10,9 +10,16 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { HeaderComponent } from './shared/header/header.component';
 import { CommonService } from './service/common.service';
 import { MapService } from './service/map.service';
+import { StreerviewComponent } from './streerview/streerview.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, MapComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    MapComponent,
+    HeaderComponent,
+    StreerviewComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
