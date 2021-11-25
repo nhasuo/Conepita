@@ -7,10 +7,13 @@ import { LoginComponent } from './login/login.component';
 import { MapComponent } from './map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './shared/header/header.component';
 import { CommonService } from './service/common.service';
 import { MapService } from './service/map.service';
 import { StreerviewComponent } from './streerview/streerview.component';
+import { ToggleComponent } from './shared/toggle/toggle.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import { StreerviewComponent } from './streerview/streerview.component';
     MapComponent,
     HeaderComponent,
     StreerviewComponent,
+    ToggleComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +30,8 @@ import { StreerviewComponent } from './streerview/streerview.component';
     HttpClientModule,
     FormsModule,
     GoogleMapsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
   ],
   providers: [CommonService, MapService],
   bootstrap: [AppComponent],
