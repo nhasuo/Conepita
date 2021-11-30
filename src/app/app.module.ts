@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -14,6 +14,8 @@ import { CommonService } from './service/common.service';
 import { MapService } from './service/map.service';
 import { StreerviewComponent } from './streerview/streerview.component';
 import { ToggleComponent } from './shared/toggle/toggle.component';
+import { CarInfoComponent } from './car-info/car-info.component';
+import { DisplayComponent } from './display/display.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ToggleComponent } from './shared/toggle/toggle.component';
     HeaderComponent,
     StreerviewComponent,
     ToggleComponent,
+    CarInfoComponent,
+    DisplayComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,7 @@ import { ToggleComponent } from './shared/toggle/toggle.component';
     GoogleMapsModule,
     BrowserAnimationsModule,
     MatIconModule,
+    ReactiveFormsModule,
   ],
   providers: [CommonService, MapService],
   bootstrap: [AppComponent],
