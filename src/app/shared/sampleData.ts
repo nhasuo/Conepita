@@ -3,7 +3,7 @@ export const sampleData = {
         "vin": "GVF556000309",
         "data": {
          "hassei_time": "20180312100353",
-         "zahyo_0": "34.745384,137.382850",
+         "zahyo_0": "34.745384,137.382850",         
          "hassei_g1": "0.37",
          "hassei_g2": "0.40",
          "hassei_g3": "0.29",

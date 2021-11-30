@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { sampleData } from '../shared/sampleData';
+import { DisplayComponent } from '../display/display.component';
+import { async, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -7,28 +9,49 @@ import { sampleData } from '../shared/sampleData';
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
-  // 初期位置(initial position)
-  zahyoIp: string = sampleData.data.zahyo_0;
-  zahyoIpArray: string[] = this.zahyoIp.split(',');
+  center!: google.maps.LatLngLiteral;
+  mapOptions!: google.maps.MapOptions;
+  marker!: any;
 
-  zahyo?: string[];
+  constructor(private displayComponent: DisplayComponent) {}
 
-  constructor() {}
+  ngOnInit(): void {
+    this.setLocation();
+    // 地図のオプション
+    this.mapOptions = {
+      disableDefaultUI: true,
+      center: this.center,
+    };
+    // markerの位置
+    this.marker = {
+      position: this.center,
+    };
+  }
 
-  ngOnInit(): void {}
+  setLocation(): void {
+    this.displayComponent.setLocation().subscribe((res) => {
+      this.center = res;
+    });
+  }
 
-  zoom = 16;
-  center: google.maps.LatLngLiteral = {
-    lat: Number(this.zahyoIpArray[0]),
-    lng: Number(this.zahyoIpArray[1]),
-  };
-  // 地図のオプション
-  mapOptions: google.maps.MapOptions = {
-    disableDefaultUI: true,
-    center: this.center,
-  };
-  // markerの位置
-  marker = {
-    position: this.center,
-  };
+  // // 初期位置(initial position)
+  // zahyoIp: string = sampleData.data.zahyo_0;
+  // zahyoIpArray: string[] = this.zahyoIp.split(',');
+
+  // zahyo?: string[];
+
+  // zoom = 16;
+  // center: google.maps.LatLngLiteral = {
+  //   lat: Number(this.zahyoIpArray[0]),
+  //   lng: Number(this.zahyoIpArray[1]),
+  // };
+  // // 地図のオプション
+  // mapOptions: google.maps.MapOptions = {
+  //   disableDefaultUI: true,
+  //   center: this.center,
+  // };
+  // // markerの位置
+  // marker = {
+  //   position: this.center,
+  // };
 }
