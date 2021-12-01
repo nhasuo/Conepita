@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { sampleData } from '../shared/sampleData';
-import { DisplayComponent } from '../display/display.component';
 import { async, Observable } from 'rxjs';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-map',
@@ -13,7 +12,7 @@ export class MapComponent implements OnInit {
   mapOptions!: google.maps.MapOptions;
   marker!: any;
 
-  constructor(private displayComponent: DisplayComponent) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.setLocation();
@@ -29,7 +28,7 @@ export class MapComponent implements OnInit {
   }
 
   setLocation(): void {
-    this.displayComponent.setLocation().subscribe((res) => {
+    this.dataService.setLocation().subscribe((res) => {
       this.center = res;
     });
   }

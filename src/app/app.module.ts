@@ -16,6 +16,7 @@ import { StreerviewComponent } from './streerview/streerview.component';
 import { ToggleComponent } from './shared/toggle/toggle.component';
 import { CarInfoComponent } from './car-info/car-info.component';
 import { DisplayComponent } from './display/display.component';
+import { TimebarComponent } from './shared/timebar/timebar.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DisplayComponent } from './display/display.component';
     ToggleComponent,
     CarInfoComponent,
     DisplayComponent,
+    TimebarComponent,
   ],
   imports: [
     BrowserModule,
