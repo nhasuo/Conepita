@@ -153,7 +153,7 @@ export class DisplayComponent implements OnInit {
   substractOne(): void {
     this.commonService.getSampleData().subscribe((res) => {
       this.dataNumber = Number(this.dataNumber);
-      if (this.dataNumber >= 1) {
+      if (this.dataNumber >= 2) {
         this.dataNumber = this.dataNumber - 1;
         this.cahnageTime(this.dataNumber);
         this.numberToString(this.dataNumber);

@@ -16,7 +16,6 @@ export class MapComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.setLocation();
     // 地図のオプション
     this.mapOptions = {
       disableDefaultUI: true,
