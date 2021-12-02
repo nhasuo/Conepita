@@ -1,3 +1,35 @@
 
-<app-car-info></app-car-info>
-<app-timebar></app-timebar>
+<app-car-info
+[steering]="steering"
+[headlamp]="headlamp"
+[stoplamp]="stoplamp"
+[turnlamp]="turnlamp"
+[pcs1]="pcs1"
+[pcs1]="pcs1" ></app-car-info>
+
+<app-map [center]="center"></app-map>
+
+<div id="timeBar">
+  <button class="substractTen" (click)="substractTen()">
+    <span class="material-icons">
+      arrow_back_ios
+      </span>
+  </button>
+  <button class="subtractOne" (click)="substractOne()">
+    <span class="material-icons">
+    chevron_left
+    </span>
+  </button>
+  -------------------
+  <button class="addOne" (click)="addOne()">
+    <span class="material-icons">
+      chevron_right
+    </span>
+  </button>
+  <button class="addTen" (click)="addTen()">
+    <span class="material-icons">
+    arrow_forward_ios
+    </span>
+  </button>
+</div>
+<div class="time">{{dispalyTime}}</div>
