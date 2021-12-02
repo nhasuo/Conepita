@@ -17,6 +17,7 @@ import { ToggleComponent } from './shared/toggle/toggle.component';
 import { CarInfoComponent } from './car-info/car-info.component';
 import { DisplayComponent } from './display/display.component';
 import { TimebarComponent } from './shared/timebar/timebar.component';
+import { MemoComponent } from './memo/memo.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TimebarComponent } from './shared/timebar/timebar.component';
     CarInfoComponent,
     DisplayComponent,
     TimebarComponent,
+    MemoComponent,
   ],
   imports: [
     BrowserModule,

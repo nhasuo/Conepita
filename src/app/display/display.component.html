@@ -1,13 +1,80 @@
+<div id="display">
+<div id="header">
+  <app-header></app-header>
+</div>
+<div id="contents">
+  <div id="map">
+    <app-map [center]="center"></app-map>
+  </div>
+  <div id="memo">
+    <app-memo></app-memo>
+  </div>
+  <div id="streetView">
+    <app-streerview [center]="center"></app-streerview>
+  </div>
+  <div id="carInfo">
+    <app-car-info
+  [steering]="steering"
+  [headlamp]="headlamp"
+  [stoplamp]="stoplamp"
+  [turnlamp]="turnlamp"
+  [pcs1]="pcs1"
+  [pcs1]="pcs1" ></app-car-info>
+  </div>
+</div>
+<div id="toggle">
+  <div class="btn-wrapper wrapper">
+    <img src="./assets/icon/location.png" alt="マップ">
+    <img src="./assets/icon/movie.png" alt="ストリートビュー">
+    <img src="./assets/icon/hamburger.png" alt="メモ">
+    <img src="./assets/icon/handle.png" alt="車の情報">
+    <!-- <mat-icon>location_on</mat-icon>
+    <mat-icon>videocam</mat-icon>
+    <mat-icon>menu</mat-icon>
+    <mat-icon>directions_car_filled</mat-icon> -->
+    <div class="save">
+      <a class="btn1" href="#">保存</a>
+    </div>
+  </div>
 
-<app-car-info
-[steering]="steering"
-[headlamp]="headlamp"
-[stoplamp]="stoplamp"
-[turnlamp]="turnlamp"
-[pcs1]="pcs1"
-[pcs1]="pcs1" ></app-car-info>
+  <div class="toggle-wrapper wrapper">
+    <div class="mt-ios-blue" style="font-size:9px;">
+      <p class="toggle-label All">All</p>
+      <input id="1" type="checkbox" />
+      <label for="1"></label>
+    </div>
+    <div class="mt-ios-blue" style="font-size:9px;">
+      <p class="toggle-label Spd">Spd</p>
+      <input id="2" type="checkbox" />
+      <label for="2"></label>
+    </div>
+    <div class="mt-ios-blue" style="font-size:9px;">
+      <p class="toggle-label Acc1">Acc</p>
+      <input id="3" type="checkbox" />
+      <label for="3"></label>
+    </div>
+    <div class="mt-ios-blue" style="font-size:9px;">
+      <p class="toggle-label Brk">Brk</p>
+      <input id="4" type="checkbox" />
+      <label for="4"></label>
+    </div>
+    <div class="mt-ios-blue" style="font-size:9px;">
+      <p class="toggle-label Acc2">Acc</p>
+      <input id="5" type="checkbox" />
+      <label for="5"></label>
+    </div>
+    <img src="./assets/icon/graph.png" alt="グラフ">
+    <img src="./assets/icon/document.png" alt="ドキュメント">
+    <!-- <mat-icon class="chart">addchart</mat-icon>
+    <mat-icon class="document">article</mat-icon> -->
+    <div class="mt-ios-blue" style="font-size:9px;">
+      <p class="toggle-label Share">Share</p>
+      <input id="6" type="checkbox" />
+      <label for="6"></label>
+    </div>
 
-<app-map [center]="center"></app-map>
+  </div>
+</div>
 
 <div id="timeBar">
   <button class="substractTen" (click)="substractTen()">
@@ -31,5 +98,7 @@
     arrow_forward_ios
     </span>
   </button>
+  <p class="time">{{dispalyTime}}</p>
 </div>
-<div class="time">{{dispalyTime}}</div>
+</div>
+
