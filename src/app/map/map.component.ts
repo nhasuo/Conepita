@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { sampleData } from '../shared/sampleData';
-import { DisplayComponent } from '../display/display.component';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { async, Observable } from 'rxjs';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-map',
@@ -9,11 +8,12 @@ import { async, Observable } from 'rxjs';
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
-  center!: google.maps.LatLngLiteral;
+  // center!: google.maps.LatLngLiteral;
   mapOptions!: google.maps.MapOptions;
   marker!: any;
+  @Input() center!: google.maps.LatLngLiteral;
 
-  constructor(private displayComponent: DisplayComponent) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.setLocation();
@@ -21,6 +21,7 @@ export class MapComponent implements OnInit {
     this.mapOptions = {
       disableDefaultUI: true,
       center: this.center,
+      zoom: 20,
     };
     // markerの位置
     this.marker = {
@@ -28,8 +29,20 @@ export class MapComponent implements OnInit {
     };
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.mapOptions = {
+      disableDefaultUI: true,
+      center: changes.center.currentValue,
+      zoom: 20,
+    };
+    this.marker = {
+      position: changes.center.currentValue,
+    };
+    console.log(changes.center.currentValue);
+  }
+
   setLocation(): void {
-    this.displayComponent.setLocation().subscribe((res) => {
+    this.dataService.setLocation().subscribe((res) => {
       this.center = res;
     });
   }
