@@ -1,34 +1,50 @@
 .header {
-  border-radius: 20px;
+  height: 100%;
   background-color: #111111;
+  font-size: 12px;
 }
 .inline-block {
   display: inline-block; /* インラインブロック要素にする */
-  padding: 20px; /* 余白指定 */
-  height: 100px; /* 高さ指定 */
+  padding: 0.1% 0.4%; /* 余白指定 */
+  height: 100%; /* 高さ指定 */
   vertical-align: middle;
+  justify-content: center;
 }
-.inline-block p {
+.input p {
   text-align: center;
-}
-.v_line_fix {
-  display: inline-block; /* インラインブロック要素にする */
-  width: 2px;
-  height: 70px;
-  vertical-align: middle;
-  background-color: white;
+  margin-bottom: 0.5vh;
+  text-align: center;
+  // margin: 5% 0.4%;
 }
 input {
-  width: 100%; /*親要素いっぱい広げる*/
-  padding: 10px 15px; /*ボックスを大きくする*/
-  font-size: 16px;
+  width: 90%; /*親要素いっぱい広げる*/
+  padding: 10px 12px; /*ボックスを大きくする*/
+  font-size: 12px;
   border-radius: 10px; /*ボックス角の丸み*/
   border: 2px solid #ddd; /*枠線*/
   box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
-}
-.left {
-  margin-left: 10px;
+  margin-left: 5%;
 }
 p {
   color: white;
+  white-space: nowrap;
+  margin-top: 1vh;
+}
+.carInfo p {
+  margin-top: 2vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+}
+.carInfo .Info {
+  margin: auto;
+  margin-top: 0;
+}
+
+// 縦線
+.v_line_fix {
+  display: inline-block; /* インラインブロック要素にする */
+  width: 2px;
+  height: 60%;
+  vertical-align: middle;
+  background-color: white;
 }

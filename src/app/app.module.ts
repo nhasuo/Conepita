@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,7 @@ import { CarInfoComponent } from './car-info/car-info.component';
 import { DisplayComponent } from './display/display.component';
 import { TimebarComponent } from './shared/timebar/timebar.component';
 import { MemoComponent } from './memo/memo.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MemoComponent } from './memo/memo.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -41,7 +43,9 @@ import { MemoComponent } from './memo/memo.component';
     BrowserAnimationsModule,
     MatIconModule,
     ReactiveFormsModule,
+    MatProgressBarModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [CommonService, MapService],
   bootstrap: [AppComponent],
 })
