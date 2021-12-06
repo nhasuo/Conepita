@@ -1,16 +1,30 @@
 <div id="carInfo-wrap">
-    <p>steering</p>
-    <p>{{steering}}</p>
-    <p>headlamp</p>
-    <p>{{headlamp}}</p>
-    <p>stoplamp</p>
-    <p>{{stoplamp}}</p>
-    <p>turnlamp</p>
-    <p>{{turnlamp}}</p>
-    <p>pcs1</p>
-    <p>{{pcs1}}</p>
-    <p>pcs2</p>
-    <p>{{pcs2}}</p>
+  <div class="steering">
+    <p>ハンドル操作量</p>
+    <p class="carInfo">{{steering}}°</p>
+  </div>
+  <div class="headlamp">
+    <p>ヘッドランプ</p>
+    <p class="carInfo" *ngIf="headlamp === 0">消灯</p>
+    <p class="carInfo" *ngIf="headlamp === 1">LO点灯</p>
+    <p class="carInfo" *ngIf="headlamp === 2">Hi点灯</p>
+  </div>
+  <div class="stoplamp">
+    <p>ブレーキランプ</p>
+    <p class="carInfo" *ngIf="stoplamp === 0">消灯</p>
+  </div>
+  <div class="turnlamp">
+    <p>ウィンカー</p>
+    <p class="carInfo" *ngIf="turnlamp === 3">消灯</p>
+  </div>
+  <div class="pcs1">
+    <p>自動ブレーキ警報</p>
+    <p class="carInfo" *ngIf="pcs1 === 0">消灯</p>
+  </div>
+  <div class="pcs2">
+    <p>自動ブレーキ制動</p>
+    <p class="carInfo" *ngIf="pcs2 === 0">消灯</p>
+  </div>
 </div>
 
 <!-- <div>

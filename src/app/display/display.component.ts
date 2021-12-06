@@ -1,8 +1,6 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { ThemePalette } from '@angular/material/core';
 import { CommonService } from '../service/common.service';
-import { CarInfoComponent } from '../car-info/car-info.component';
-import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-display',
@@ -10,13 +8,13 @@ import { DataService } from '../service/data.service';
   styleUrls: ['./display.component.scss'],
 })
 export class DisplayComponent implements OnInit {
-  constructor(
-    private commonService: CommonService,
-    private dataService: DataService
-  ) {}
+  constructor(private commonService: CommonService) {}
 
   ngOnInit(): void {
     this.commonService.getSampleData().subscribe((res) => {
+      this.setHeader(res);
+      console.log(this.hassei_time);
+      console.log(this.hassei_zahyo);
       this.numberToString(this.dataNumber);
       const zahyo_T = 'zahyo_telema_' + this.dataNumber;
       this.ipArray = res.data[zahyo_T].split(',');
@@ -50,7 +48,20 @@ export class DisplayComponent implements OnInit {
   pcs1!: number;
   pcs2!: number;
   turnlamp!: number;
+  // 証券番号
+  vin!: string;
+  // 発生時間表示
+  hassei_time!: string;
+  hassei_zahyo!: google.maps.LatLngLiteral;
 
+  //プログレスバー設定
+  progress: number = (101 / 200) * 100;
+  color: ThemePalette = 'primary';
+  mode: any = 'determinate';
+
+  changeProgressBar(dataNumber: number) {
+    this.progress = (dataNumber / 200) * 100;
+  }
   // dataNumberを三桁にする関数
   numberToString(dataNumber: number | string): void {
     this.dataNumber = String(dataNumber);
@@ -68,6 +79,18 @@ export class DisplayComponent implements OnInit {
     } else {
       this.dispalyTime = `${diff}秒後`;
     }
+  }
+  //headerに渡すデータの処理
+  setHeader(res: any) {
+    this.vin = res.vin;
+    this.hassei_time = res.data.hassei_time;
+    const zahyo_0 = res.data.zahyo_0;
+    const lat: number = Number(zahyo_0.split(',')[0]);
+    const lng: number = Number(zahyo_0.split(',')[1]);
+    this.hassei_zahyo = {
+      lat: lat,
+      lng: lng,
+    };
   }
 
   // 車・位置情報をプロパティに格納する関数
@@ -95,6 +118,7 @@ export class DisplayComponent implements OnInit {
       if (this.dataNumber <= 190) {
         this.dataNumber = this.dataNumber + 10;
         this.cahnageTime(this.dataNumber);
+        this.changeProgressBar(this.dataNumber);
         this.numberToString(this.dataNumber);
         //位置情報を更新
         const zahyo_T = 'zahyo_telema_' + this.dataNumber;
@@ -116,6 +140,7 @@ export class DisplayComponent implements OnInit {
       if (this.dataNumber <= 199) {
         this.dataNumber = this.dataNumber + 1;
         this.cahnageTime(this.dataNumber);
+        this.changeProgressBar(this.dataNumber);
         this.numberToString(this.dataNumber);
         //位置情報を更新
         const zahyo_T = 'zahyo_telema_' + this.dataNumber;
@@ -136,6 +161,7 @@ export class DisplayComponent implements OnInit {
       if (this.dataNumber >= 10) {
         this.dataNumber = this.dataNumber - 10;
         this.cahnageTime(this.dataNumber);
+        this.changeProgressBar(this.dataNumber);
         this.numberToString(this.dataNumber);
         //位置情報を更新
         const zahyo_T = 'zahyo_telema_' + this.dataNumber;
@@ -156,6 +182,7 @@ export class DisplayComponent implements OnInit {
       if (this.dataNumber >= 2) {
         this.dataNumber = this.dataNumber - 1;
         this.cahnageTime(this.dataNumber);
+        this.changeProgressBar(this.dataNumber);
         this.numberToString(this.dataNumber);
         //位置情報を更新
         const zahyo_T = 'zahyo_telema_' + this.dataNumber;
@@ -170,4 +197,46 @@ export class DisplayComponent implements OnInit {
       }
     });
   }
+
+  mapCheck: boolean = true;
+  memoCheck: boolean = true;
+  streetViewCheck: boolean = true;
+  carInfoCheck: boolean = true;
+
+  mapDisplay() {
+    if (this.mapCheck) {
+      this.mapCheck = false;
+    } else {
+      this.mapCheck = true;
+    }
+  }
+  memoDisplay() {
+    if (this.memoCheck) {
+      this.memoCheck = false;
+    } else {
+      this.memoCheck = true;
+    }
+  }
+  streetViewDisplay() {
+    if (this.streetViewCheck) {
+      this.streetViewCheck = false;
+    } else {
+      this.streetViewCheck = true;
+    }
+  }
+  carInfoDisplay() {
+    if (this.carInfoCheck) {
+      this.carInfoCheck = false;
+    } else {
+      this.carInfoCheck = true;
+    }
+  }
+
+  // displayCheck(check: boolean) {
+  //   if (check) {
+  //     check = false;
+  //   } else {
+  //     check = true;
+  //   }
+  // }
 }

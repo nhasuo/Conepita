@@ -1,4 +1,17 @@
 #carInfo-wrap {
+  padding: 0;
   height: 100%;
   margin: 0;
+  background-color: #c0c0c0;
+}
+p {
+  display: inline;
+  padding-left: 2%;
+}
+
+div {
+  padding-top: 2%;
+}
+.carInfo {
+  color: red;
 }

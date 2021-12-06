@@ -1,104 +1,124 @@
 <div id="display">
-<div id="header">
-  <app-header></app-header>
-</div>
-<div id="contents">
-  <div id="map">
-    <app-map [center]="center"></app-map>
+  <div id="header">
+    <app-header
+    [vin]="vin"
+    [hassei_time]="hassei_time"
+    [hassei_zahyo]="hassei_zahyo"
+    ></app-header>
   </div>
-  <div id="memo">
-    <app-memo></app-memo>
-  </div>
-  <div id="streetView">
-    <app-streerview [center]="center"></app-streerview>
-  </div>
-  <div id="carInfo">
-    <app-car-info
-  [steering]="steering"
-  [headlamp]="headlamp"
-  [stoplamp]="stoplamp"
-  [turnlamp]="turnlamp"
-  [pcs1]="pcs1"
-  [pcs1]="pcs1" ></app-car-info>
-  </div>
-</div>
-<div id="toggle">
-  <div class="btn-wrapper wrapper">
-    <img src="./assets/icon/location.png" alt="マップ">
-    <img src="./assets/icon/movie.png" alt="ストリートビュー">
-    <img src="./assets/icon/hamburger.png" alt="メモ">
-    <img src="./assets/icon/handle.png" alt="車の情報">
-    <!-- <mat-icon>location_on</mat-icon>
-    <mat-icon>videocam</mat-icon>
-    <mat-icon>menu</mat-icon>
-    <mat-icon>directions_car_filled</mat-icon> -->
-    <div class="save">
-      <a class="btn1" href="#">保存</a>
+  <div id="contents">
+    <div id="map" [hidden]="!mapCheck">
+      <app-map [center]="center"></app-map>
+    </div>
+    <div id="memo">
+      <app-memo
+      [hidden]="!memoCheck"></app-memo>
+    </div>
+    <div id="streetView">
+      <app-streerview [center]="center"
+      [hidden]="!streetViewCheck"></app-streerview>
+    </div>
+    <div id="carInfo">
+      <app-car-info
+    [steering]="steering"
+    [headlamp]="headlamp"
+    [stoplamp]="stoplamp"
+    [turnlamp]="turnlamp"
+    [pcs1]="pcs1"
+    [pcs2]="pcs2"
+    [hidden]="!carInfoCheck"></app-car-info>
     </div>
   </div>
 
-  <div class="toggle-wrapper wrapper">
-    <div class="mt-ios-blue" style="font-size:9px;">
-      <p class="toggle-label All">All</p>
-      <input id="1" type="checkbox" />
-      <label for="1"></label>
+  <div id="side-bar">
+    <div class="btn-wrapper wrapper">
+      <div class="upper-icon icon location-icon" (click)="mapDisplay()" [ngClass]="{'dispalyOn': mapCheck}">
+        <mat-icon class="location display-btn">location_on</mat-icon>
+      </div>
+      <div class="upper-icon icon" (click)="streetViewDisplay()" [ngClass]="{'dispalyOn': streetViewCheck}">
+        <mat-icon class="display-btn">videocam</mat-icon>
+      </div>
+      <div class="upper-icon icon" (click)="memoDisplay()" [ngClass]="{'dispalyOn': memoCheck}">
+        <mat-icon class="display-btn">menu</mat-icon>
+      </div>
+      <div class="upper-icon icon" (click)="carInfoDisplay()" [ngClass]="{'dispalyOn': carInfoCheck}">
+        <mat-icon class="display-btn">directions_car_filled</mat-icon>
+      </div>
+      <div class="upper-icon icon save">
+        <mat-icon class="top-btn">save</mat-icon>
+      </div>
     </div>
-    <div class="mt-ios-blue" style="font-size:9px;">
-      <p class="toggle-label Spd">Spd</p>
-      <input id="2" type="checkbox" />
-      <label for="2"></label>
+    <div class="blank"></div>
+    <div class="toggle-wrapper wrapper">
+      <div class="mt-ios-blue" style="font-size:7px;">
+        <p class="toggle-label All">All</p>
+        <input id="1" type="checkbox" />
+        <label for="1"></label>
+      </div>
+      <div class="mt-ios-blue" style="font-size:7px;">
+        <p class="toggle-label Spd">Spd</p>
+        <input id="2" type="checkbox" />
+        <label for="2"></label>
+      </div>
+      <div class="mt-ios-blue" style="font-size:7px;">
+        <p class="toggle-label Acc1">Acc</p>
+        <input id="3" type="checkbox" />
+        <label for="3"></label>
+      </div>
+      <div class="mt-ios-blue" style="font-size:7px;">
+        <p class="toggle-label Brk">Brk</p>
+        <input id="4" type="checkbox" />
+        <label for="4"></label>
+      </div>
+      <div class="mt-ios-blue" style="font-size:7px;">
+        <p class="toggle-label Acc2">Acc</p>
+        <input id="5" type="checkbox" />
+        <label for="5"></label>
+      </div>
+      <div class="bottom-icon icon">
+        <mat-icon class="chart">addchart</mat-icon>
+      </div>
+      <div class="bottom-icon icon">
+        <mat-icon class="document">article</mat-icon>
+      </div>
+      <div class="mt-ios-blue" style="font-size:7px;">
+        <p class="toggle-label Share">Share</p>
+        <input id="6" type="checkbox" />
+        <label for="6"></label>
+      </div>
     </div>
-    <div class="mt-ios-blue" style="font-size:9px;">
-      <p class="toggle-label Acc1">Acc</p>
-      <input id="3" type="checkbox" />
-      <label for="3"></label>
-    </div>
-    <div class="mt-ios-blue" style="font-size:9px;">
-      <p class="toggle-label Brk">Brk</p>
-      <input id="4" type="checkbox" />
-      <label for="4"></label>
-    </div>
-    <div class="mt-ios-blue" style="font-size:9px;">
-      <p class="toggle-label Acc2">Acc</p>
-      <input id="5" type="checkbox" />
-      <label for="5"></label>
-    </div>
-    <img src="./assets/icon/graph.png" alt="グラフ">
-    <img src="./assets/icon/document.png" alt="ドキュメント">
-    <!-- <mat-icon class="chart">addchart</mat-icon>
-    <mat-icon class="document">article</mat-icon> -->
-    <div class="mt-ios-blue" style="font-size:9px;">
-      <p class="toggle-label Share">Share</p>
-      <input id="6" type="checkbox" />
-      <label for="6"></label>
-    </div>
-
   </div>
-</div>
 
-<div id="timeBar">
-  <button class="substractTen" (click)="substractTen()">
-    <span class="material-icons">
-      arrow_back_ios
-      </span>
-  </button>
-  <button class="subtractOne" (click)="substractOne()">
-    <span class="material-icons">
-    chevron_left
-    </span>
-  </button>
-  -------------------
-  <button class="addOne" (click)="addOne()">
-    <span class="material-icons">
-      chevron_right
-    </span>
-  </button>
-  <button class="addTen" (click)="addTen()">
-    <span class="material-icons">
-    arrow_forward_ios
-    </span>
-  </button>
-  <p class="time">{{dispalyTime}}</p>
-</div>
+  <div id="timeBar">
+    <div class="timebar-wrapper">
+      <div class="substractTen time-bar-btn" (click)="substractTen()">
+        <span class="material-icons substractTenBtn">
+          arrow_back_ios
+          </span>
+      </div>
+      <div class="subtractOne time-bar-btn" (click)="substractOne()">
+        <span class="material-icons substractOneBtn">
+        chevron_left
+        </span>
+      </div>
+      <div class="progress-bar">
+        <mat-progress-bar mode="determinate" [value]="progress" [bufferValue]=1></mat-progress-bar>
+      </div>
+      <div class="addOne time-bar-btn" (click)="addOne()">
+        <span class="material-icons addOneBtn">
+          chevron_right
+        </span>
+      </div>
+      <div class="addTen time-bar-btn" (click)="addTen()">
+        <span class="material-icons addTenBtn">
+        arrow_forward_ios
+        </span>
+      </div>
+    </div>
+    <div class="progress-wrapper">
+      <p class="progress">{{dispalyTime}}</p>
+    </div>
+  </div>
+
 </div>
 
