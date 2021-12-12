@@ -3,13 +3,17 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-memo',
   templateUrl: './memo.component.html',
-  styleUrls: ['./memo.component.scss']
+  styleUrls: ['./memo.component.scss'],
 })
 export class MemoComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
+  public memo!: string;
+  memos: string[] = [];
 
-  ngOnInit(): void {
+  register(message: string) {
+    this.memos.push(message);
+    console.log(this.memos);
   }
-
 }

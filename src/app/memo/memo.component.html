@@ -1,5 +1,18 @@
 <div id="memo-wrap">
-  <p>memo works!</p>
-  <p>memo works!</p>
-  <p>memo works!</p>
+  <div id="memoDisplay">
+    <p>memo works!</p>
+    <p>memo works!</p>
+    <p>memo works!</p>
+    <div id="memos" *ngFor="let memo of memos">
+      <p>{{memo}}</p>
+    </div>
+  </div>
+
+  <div class="memo-registar">
+    <input type="text" class="memodesu" #newMemo/>
+    <button class="submit" [(ngModel)]="memo" (click)="register(newMemo.value); newMemo.value=''">保存</button>
+  </div>
 </div>
+
+
+
