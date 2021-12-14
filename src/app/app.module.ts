@@ -19,6 +19,8 @@ import { DisplayComponent } from './display/display.component';
 import { TimebarComponent } from './shared/timebar/timebar.component';
 import { MemoComponent } from './memo/memo.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ChartsComponent } from './charts/charts.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     DisplayComponent,
     TimebarComponent,
     MemoComponent,
+    ChartsComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatIconModule,
     ReactiveFormsModule,
     MatProgressBarModule,
+    NgChartsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [CommonService, MapService],

@@ -198,6 +198,7 @@ export class DisplayComponent implements OnInit {
     });
   }
 
+  //格コンポーネントの表示・非表示を変更するための関数
   mapCheck: boolean = true;
   memoCheck: boolean = true;
   streetViewCheck: boolean = true;
@@ -231,6 +232,9 @@ export class DisplayComponent implements OnInit {
       this.carInfoCheck = true;
     }
   }
+
+  //chartsのON/OFF
+  showAll: boolean = false;
 
   // displayCheck(check: boolean) {
   //   if (check) {

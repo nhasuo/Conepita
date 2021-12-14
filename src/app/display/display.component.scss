@@ -1,6 +1,7 @@
 #display {
   width: 100vw;
   height: 100vh;
+  position: relative;
 }
 #header {
   height: 10vh;
@@ -21,6 +22,12 @@
   clear: both;
   width: 100vw;
   height: 8vh;
+}
+#charts {
+  position: absolute;
+  z-index: 50;
+  top: 50.8%;
+  padding-left: 0.2%;
 }
 
 //contentsの中身
