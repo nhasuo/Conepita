@@ -6,6 +6,9 @@
     [hassei_zahyo]="hassei_zahyo"
     ></app-header>
   </div>
+  <div id="charts" *ngIf="showAll">
+    <app-charts></app-charts>
+  </div>
   <div id="contents">
     <div id="map" [hidden]="!mapCheck">
       <app-map [center]="center"></app-map>
@@ -52,7 +55,7 @@
     <div class="toggle-wrapper wrapper">
       <div class="mt-ios-blue" style="font-size:7px;">
         <p class="toggle-label All">All</p>
-        <input id="1" type="checkbox" />
+        <input id="1" type="checkbox" [(ngModel)]="showAll"/>
         <label for="1"></label>
       </div>
       <div class="mt-ios-blue" style="font-size:7px;">
