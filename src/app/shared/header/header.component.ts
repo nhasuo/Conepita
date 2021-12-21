@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { sampleData } from '../sampleData';
 
 @Component({
@@ -23,6 +23,28 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.getTimeInfo(this.hassei_time);
     this.getLocation();
+    console.log(this.hassei_time)
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    const geocoder = new google.maps.Geocoder();
+    const result: any = geocoder
+      .geocode({ location: changes.hassei_zahyo.currentValue })
+      .then((response) => {
+        this.location = response.results[0].formatted_address.substr(13);
+      })
+      .catch((e) => {
+        console.log('Geocoder failed due to: ' + e);
+      });
+      this.getTimeInfo(changes.hassei_time.currentValue);
+    // this.mapOptions = {
+    //   disableDefaultUI: true,
+    //   center: changes.center.currentValue,
+    //   zoom: 20,
+    // };
+    // this.marker = {
+    //   position: changes.center.currentValue,
+    // };
+    // console.log(changes.center.currentValue);
   }
 
   // 発生時間表示

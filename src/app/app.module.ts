@@ -21,6 +21,7 @@ import { MemoComponent } from './memo/memo.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ChartsComponent } from './charts/charts.component';
 import { NgChartsModule } from 'ng2-charts';
+import { SaveComponent } from './save/save.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NgChartsModule } from 'ng2-charts';
     TimebarComponent,
     MemoComponent,
     ChartsComponent,
+    SaveComponent,
   ],
   imports: [
     BrowserModule,

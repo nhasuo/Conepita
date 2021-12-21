@@ -6,6 +6,10 @@
     [hassei_zahyo]="hassei_zahyo"
     ></app-header>
   </div>
+  <div id="save" [hidden]="!saveCheck">
+    <app-save
+    [saveCheck]="saveCheck" (hideSave)="saveCheck=$event"></app-save>
+  </div>
   <div id="charts" *ngIf="showAll">
     <app-charts></app-charts>
   </div>
@@ -13,29 +17,27 @@
     <div id="map" [hidden]="!mapCheck">
       <app-map [center]="center"></app-map>
     </div>
-    <div id="memo">
-      <app-memo
-      [hidden]="!memoCheck"></app-memo>
+    <div id="memo" [hidden]="!memoCheck">
+      <app-memo></app-memo>
     </div>
-    <div id="streetView">
+    <div id="streetView" [hidden]="!streetViewCheck">
       <app-streerview [center]="center"
-      [hidden]="!streetViewCheck"></app-streerview>
+      ></app-streerview>
     </div>
-    <div id="carInfo">
+    <div id="carInfo" [hidden]="!carInfoCheck">
       <app-car-info
     [steering]="steering"
     [headlamp]="headlamp"
     [stoplamp]="stoplamp"
     [turnlamp]="turnlamp"
     [pcs1]="pcs1"
-    [pcs2]="pcs2"
-    [hidden]="!carInfoCheck"></app-car-info>
+    [pcs2]="pcs2"></app-car-info>
     </div>
   </div>
 
   <div id="side-bar">
     <div class="btn-wrapper wrapper">
-      <div class="upper-icon icon location-icon" (click)="mapDisplay()" [ngClass]="{'dispalyOn': mapCheck}">
+      <div class="upper-icon icon location-icon" (click)="mapDisplay(); checkHalfSize()" [ngClass]="{'dispalyOn': mapCheck}">
         <mat-icon class="location display-btn">location_on</mat-icon>
       </div>
       <div class="upper-icon icon" (click)="streetViewDisplay()" [ngClass]="{'dispalyOn': streetViewCheck}">
@@ -47,7 +49,7 @@
       <div class="upper-icon icon" (click)="carInfoDisplay()" [ngClass]="{'dispalyOn': carInfoCheck}">
         <mat-icon class="display-btn">directions_car_filled</mat-icon>
       </div>
-      <div class="upper-icon icon save">
+      <div class="upper-icon icon save" (click)="displaySave()">
         <mat-icon class="top-btn">save</mat-icon>
       </div>
     </div>

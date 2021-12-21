@@ -10,7 +10,9 @@ import { sampleData } from '../shared/sampleData';
   providedIn: 'root',
 })
 export class CommonService {
-  constructor(private http: HttpClient, private router: Router) {}
+
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
   login(httpParams: Model.LoginRequest): Observable<Model.LoginResponse> {
     const option = {
@@ -21,6 +23,9 @@ export class CommonService {
   }
 
   getSampleData(): Observable<any> {
-    return of(sampleData);
+    const getQuestionUrl = 'https://uean7boq43.execute-api.ap-northeast-3.amazonaws.com/dev';　//自分で作ったAWS
+    return this.http.get<any>(getQuestionUrl);
+    // return of(sampleData);
   }
+
 }

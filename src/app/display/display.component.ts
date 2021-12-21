@@ -91,6 +91,7 @@ export class DisplayComponent implements OnInit {
       lat: lat,
       lng: lng,
     };
+    console.log(this.hassei_time);
   }
 
   // 車・位置情報をプロパティに格納する関数
@@ -235,6 +236,25 @@ export class DisplayComponent implements OnInit {
 
   //chartsのON/OFF
   showAll: boolean = false;
+
+  //各要素の半分表示、フルサイズ表示
+  //断念
+  mapHalfSize: boolean = false;
+  memoHalfSize: boolean = false;
+
+  checkHalfSize(){
+    if(!this.mapCheck && this.memoCheck){
+      this.memoHalfSize = true
+    }
+  }
+
+  //save画面表示
+  saveCheck : boolean = false;
+  displaySave(){
+    this.saveCheck = true
+  }
+
+  
 
   // displayCheck(check: boolean) {
   //   if (check) {

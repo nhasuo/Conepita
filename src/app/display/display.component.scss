@@ -8,13 +8,13 @@
 }
 #contents {
   float: left;
-  width: 95.5%;
+  width: 96.2vw;
   height: 82vh;
   background-color: #bad3ff;
 }
 #side-bar {
   float: right;
-  width: 4.5vw;
+  width: 3.8vw;
   height: 82vh;
 }
 #timeBar {
@@ -28,6 +28,12 @@
   z-index: 50;
   top: 50.8%;
   padding-left: 0.2%;
+}
+#save {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 60;
 }
 
 //contentsの中身
@@ -79,7 +85,7 @@ mat-icon {
   height: 35%;
 }
 .blank {
-  height: 17%;
+  height: 22%;
 }
 .toggle-wrapper {
   height: 30%;
@@ -101,7 +107,7 @@ label {
   display: flex;
 }
 .progress-bar {
-  width: 90%;
+  width: 95%;
 }
 .progress-wrapper {
   float: left;
@@ -142,6 +148,11 @@ span {
   padding: 0;
   font-size: 12px;
   color: white;
+}
+
+.mapHalfSize{
+  display: block;
+  width: 100%;
 }
 
 // img {
